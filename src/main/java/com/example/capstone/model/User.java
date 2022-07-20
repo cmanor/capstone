@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name =  "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -17,7 +17,6 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
     private String email;
 
     private String password;
@@ -29,7 +28,12 @@ public class User {
                     name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
+
     private Collection<Role> roles;
+
+    public User() {
+
+    }
 
     public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
         super();
@@ -39,16 +43,10 @@ public class User {
         this.password = password;
         this.roles = roles;
     }
-
-    public User() {
-
-    }
-
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getFirstName() {
@@ -69,16 +67,17 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Collection<Role> getRoles() {
-        return roles;
-    }
     public String getPassword() {
         return password;
     }
     public void setPassword(String password) {
         this.password = password;
     }
+    public Collection<Role> getRoles() {
+        return roles;
+    }
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
 }

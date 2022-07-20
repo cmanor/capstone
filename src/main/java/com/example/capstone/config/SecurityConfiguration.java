@@ -37,20 +37,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
-
-    //if we add react we may need to grant more requests, not sure
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().antMatchers(
-                "/registration**",
-                    "/js/**",
-                    "/css/**",
-                    "/img/**").permitAll()
+        http.authorizeRequests().antMatchers(
+                        "/registration**",
+                        "/js/**",
+                        "/css/**",
+                        "/img/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("login")
+                .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout()
@@ -59,6 +56,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout")
                 .permitAll();
-
     }
+
 }
