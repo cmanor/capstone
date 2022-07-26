@@ -11,19 +11,21 @@
 <body>
 
     <div class="container my-2">
-        <a th:href = "@{/newTaskForm}"class="btn btn-primary btn-sm mb-3"> Add Task</a>
+        <a th:href = "@{/newTaskForm}" class="btn btn-primary btn-sm mb-3"> Add Task</a>
         <h1> Tasks List</h1>
-        <table border="1" class = "table table-striped table-responsive-md">
+        <table class = "table table-striped table-responsive">
             <thead>
                 <tr>
                     <th> Task Name</th>
                     <th> Task Description </th>
+                    <th> Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="task : ${listTasks}">
                     <td th:text="${task.name}"><td>
                     <td th:text="${task.description}"><td>
+                    <td> <a th:href="@{/showFormForUpdate/{id}(id=${task.id})}" class="btn btn-primary">Update</a></td>
                 </tr>
             </tbody>
         </table>

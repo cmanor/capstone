@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -14,7 +15,7 @@ public class TaskController {
 
     @Autowired
     private TaskService taskService;
-    // display list of employees
+    // display list of tasks
     @GetMapping("/tasks")
     public String viewTaskPage(Model model) {
         model.addAttribute("listTasks", taskService.getAllTasks());
@@ -31,8 +32,21 @@ public class TaskController {
 
     @PostMapping("/saveTask")
     public String saveTask(@ModelAttribute("task") Task task){
-        //save employee to database
+        //save task to database
         taskService.saveTask(task);
         return "redirect:/tasks";
     }
+
+    @GetMapping("showFormForUpdate/{id}")
+    public String showFormForUpdate(@PathVariable (value = "id") long id, Model model) {
+
+        //get task from the service
+        Task task = taskService.getTaskById(id);
+
+        // set employee as a model attribute to pre-poulate the form
+        model.addAttribute("task", task);
+        return "update_task";
+
+    }
+
 }
