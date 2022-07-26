@@ -1,4 +1,10 @@
 package com.example.capstone.service;
 
-public class TaskService {
+import com.example.capstone.model.Task;
+
+import java.util.List;
+
+public interface TaskService {
+    List<Task> getAllTasks();
+    void saveTask(Task task);
 }
