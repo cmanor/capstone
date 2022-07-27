@@ -22,6 +22,12 @@ public class TaskController {
         return "tasks";
     }
 
+    @GetMapping("/useTask")
+    public String useTask(Model model) {
+        model.addAttribute("listTasks", taskService.getAllTasks());
+        return "use_task";
+    }
+
     @GetMapping("/newTaskForm")
     public String newTaskForm(Model model) {
         //create model attribute to bind form data
@@ -43,10 +49,9 @@ public class TaskController {
         //get task from the service
         Task task = taskService.getTaskById(id);
 
-        // set employee as a model attribute to pre-poulate the form
+        // set task as a model attribute to pre-poulate the form
         model.addAttribute("task", task);
         return "update_task";
-
     }
 
     @GetMapping("/deleteTask/{id}")
@@ -56,5 +61,7 @@ public class TaskController {
         this.taskService.deleteTaskById(id);
         return "redirect:/tasks";
     }
+
+
 
 }
