@@ -27,8 +27,8 @@
         <tr th:each="task : ${listTasks}">
             <td th:text="${task.name}"><td>
             <td th:text="${task.description}"><td>
-            <td> <a th:href="@{/showFormForUpdate/{id}(id=${task.id})}" class="btn btn-primary">Start Timer</a>
-                <a th:href="@{/deleteTask/{id}(id=${task.id})}" class="btn btn-danger">Stop Timer</a>
+            <td> <a th:href="@{/showFormForUpdate/{id}(id=${task.id})}" class="btn btn-primary">Start Timer (do not click, not set up yet)</a>
+                <a th:href="@{/deleteTask/{id}(id=${task.id})}" class="btn btn-danger">Stop Timer (do not click not set up yet)</a>
             </td>
         </tr>
         </tbody>
