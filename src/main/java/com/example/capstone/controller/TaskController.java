@@ -49,4 +49,12 @@ public class TaskController {
 
     }
 
+    @GetMapping("/deleteTask/{id}")
+    public String deleteTask(@PathVariable (value = "id") long id) {
+
+        // call delete employee method
+        this.taskService.deleteTaskById(id);
+        return "redirect:/tasks";
+    }
+
 }
