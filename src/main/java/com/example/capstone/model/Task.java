@@ -16,16 +16,14 @@ public class Task {
     @Column(name = "description")
     private String description;
 
+    private Long userId;
+
 
     public Task(){}
 
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

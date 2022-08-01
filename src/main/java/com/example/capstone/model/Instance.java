@@ -11,8 +11,6 @@ public class Instance {
     private Long instanceId;
 
 
-    //strategy generation type sequence?
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long iteration;
 
 
@@ -29,7 +27,66 @@ public class Instance {
 
 
             //need to find a way to link this to the tasKId
-    private Long TaskId;
+    private Long taskId;
+
+    private long userId;
 
 
+
+
+    public Long getInstanceId() {
+        return instanceId;
+    }
+
+    public void setInstanceId(Long instanceId) {
+        this.instanceId = instanceId;
+    }
+
+    public Long getIteration() {
+        return iteration;
+    }
+
+    public void setIteration(Long iteration) {
+        this.iteration = iteration;
+    }
+
+    public Long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
+    }
+
+    public Long getStopTime() {
+        return stopTime;
+    }
+
+    public void setStopTime(Long stopTime) {
+        this.stopTime = stopTime;
+    }
+
+    public Long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Long duration) {
+        this.duration = duration;
+    }
+
+    public Long getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 }
